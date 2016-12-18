@@ -41,6 +41,8 @@
 #include <unistd.h>
 #include "sl.h"
 
+#include "akane.h"
+
 void add_smoke(int y, int x);
 void add_man(int y, int x);
 int add_C51(int x);
@@ -53,6 +55,7 @@ int ACCIDENT  = 0;
 int LOGO      = 0;
 int FLY       = 0;
 int C51       = 0;
+int AKANE     = 0;
 
 int my_mvaddstr(int y, int x, char *str)
 {
@@ -73,6 +76,8 @@ void option(char *str)
             case 'F': FLY      = 1; break;
             case 'l': LOGO     = 1; break;
             case 'c': C51      = 1; break;
+            case 'M': AKANE    = 1; break;
+            case 'B': AKANE    = 2; break;
             default:                break;
         }
     }
@@ -101,6 +106,12 @@ int main(int argc, char *argv[])
         }
         else if (C51 == 1) {
             if (add_C51(x) == ERR) break;
+        }
+        else if (AKANE == 1) {
+            if (add_AKANE(x, 0) == ERR) break;
+        }
+        else if (AKANE == 2) {
+            if (add_AKANE(x, 1) == ERR) break;
         }
         else {
             if (add_D51(x) == ERR) break;

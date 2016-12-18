@@ -10,4 +10,10 @@ CC=gcc
 CFLAGS=-O
 
 sl: sl.c sl.h
-	$(CC) $(CFLAGS) -o sl sl.c -lncurses
+	$(CC) $(CFLAGS) -o sl sl.c akane.c -lncurses
+
+debug:
+	$(CC) $(CFLAGS) -o sl sl.c akane.c -lncurses -g
+
+clean:
+	-rm sl
